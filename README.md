@@ -1,4 +1,9 @@
+GRUPO 6 TURMA 54
+VANESSA BASILIO
+
+
 # E-lasGen
+
  ** Um ecommerce que almeja ser um espaço de inclusão para mulheres que se encontram em vulnerabilidade econômica/social ** 
 
  RELATÓRIO ENTREGA DO BANCO DE DADOS (Tabela Categorias)
@@ -8,3 +13,5 @@ Portanto, os atributos escolhidos para essa tabela foram:
 Id;
 Tipo; 
 Classe.
+
+
