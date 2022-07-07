@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ELasgenApplication {
+public class ElasgenApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ELasgenApplication.class, args);
+		SpringApplication.run(ElasgenApplication.class, args);
 	}
 
 }
