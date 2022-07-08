@@ -6,9 +6,12 @@ package br.com.elasgen.elasgen.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_produtos")
@@ -35,6 +38,20 @@ public class Produtos {
 	
 	@NotNull
 	private String imagem;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private Categorias categorias;
+	
+	
+
+	public Categorias getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(Categorias categorias) {
+		this.categorias = categorias;
+	}
 
 	public long getId() {
 		return id;

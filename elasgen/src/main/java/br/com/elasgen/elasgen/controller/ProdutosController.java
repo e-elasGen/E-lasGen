@@ -37,10 +37,6 @@ public class ProdutosController {
 		return repository.findById(id).map(resp-> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());	
 	}
 	
-	@GetMapping("/descricao/{descricao}")
-	public ResponseEntity<List<Produtos>> getByDescricao(@PathVariable String descricao ){
-		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
-		}
 	
 	@PostMapping
 	public ResponseEntity<Produtos> post (@RequestBody Produtos produtos){
@@ -54,10 +50,15 @@ public class ProdutosController {
 		
 	}
 	
-	@DeleteMapping
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
+	
+	@GetMapping("/descricao/{descricao}")
+	public ResponseEntity<List<Produtos>> getByDescricao(@PathVariable String descricao ){
+		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
+		}
 	
 	
 

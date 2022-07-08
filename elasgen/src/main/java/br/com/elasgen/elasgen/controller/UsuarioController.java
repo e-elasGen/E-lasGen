@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.elasgen.elasgen.model.Categorias;
-import br.com.elasgen.elasgen.repository.CategoriasRepository;
+import br.com.elasgen.elasgen.model.Usuario;
+import br.com.elasgen.elasgen.repository.UsuarioRepository;
 
 @RestController
-@RequestMapping("categorias")
+@RequestMapping("usuario")
 @CrossOrigin( origins = "*" , allowedHeaders = "*")
-public class CategoriasController {
-	
+public class UsuarioController {
+
 	
 	@Autowired
-	private CategoriasRepository repository;
+	private UsuarioRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<Categorias>> getall(){
+	public ResponseEntity<List<Usuario>> getall(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Categorias> getById(@PathVariable long id){
+	public ResponseEntity<Usuario> getById(@PathVariable long id){
 		return repository.findById(id).map(resp-> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());	
 	}
 	
 	
 	@PostMapping
-	public ResponseEntity<Categorias> post (@RequestBody Categorias categorias){
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(categorias));
+	public ResponseEntity<Usuario> post (@RequestBody Usuario usuario){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 		
 	}
 	
 	@PutMapping
-	public ResponseEntity<Categorias> put (@RequestBody Categorias categorias){
-		return ResponseEntity.ok(repository.save(categorias));
+	public ResponseEntity<Usuario> put (@RequestBody Usuario usuario){
+		return ResponseEntity.ok(repository.save(usuario));
 		
 	}
 	
@@ -55,9 +55,9 @@ public class CategoriasController {
 		repository.deleteById(id);
 	}
 	
-	@GetMapping("/tipo/{tipo}")
-	public ResponseEntity<List<Categorias>> getByTipo(@PathVariable String tipo ){
-		return ResponseEntity.ok(repository.findAllByTipoContainingIgnoreCase(tipo));
+	@GetMapping("/nome/{nome}")
+	public ResponseEntity<List<Usuario>> getByNome(@PathVariable String nome ){
+		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 		}
-
+	
 }
