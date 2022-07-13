@@ -16,15 +16,15 @@ import br.com.elasgen.elasgen.repository.UsuarioRepository;
 public class UsuarioService {
 
 	@Autowired
-	private UsuarioRepository usuarioRepository;
+	private UsuarioRepository repository;
 
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
-		if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
+		if (repository.findByUsuario(usuario.getUsuario()).isPresent())
 			return Optional.empty();
 
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
 
-		return Optional.of(usuarioRepository.save(usuario));
+		return Optional.of(repository.save(usuario));
 	}
 
 	private String criptografarSenha(String senha) {
@@ -53,7 +53,7 @@ public class UsuarioService {
 
 	public Optional<UserLogin> logarUsuario(Optional<UserLogin> userLogin) {
 
-		Optional<Usuario> usuario = usuarioRepository.findByUsuario(userLogin.get().getUsuario());
+		Optional<Usuario> usuario = repository.findByUsuario(userLogin.get().getUsuario());
 
 		if (usuario.isPresent()) {
 			if(compararSenhas(userLogin.get().getSenha(), usuario.get().getSenha())) {
