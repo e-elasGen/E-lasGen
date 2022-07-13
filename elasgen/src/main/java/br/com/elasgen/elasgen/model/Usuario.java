@@ -24,15 +24,19 @@ public class Usuario {
 	private long id;
 	
 	@NotNull
+	@Size(min=2, max=50)
 	private String nome;
 	
 	@NotNull
 	@Email
+	@Size(min=2,max=50)
 	private String usuario;
 	
 	@NotNull
+	@Size(min=8,max=12, message=" Mínimo de 8 caracteres e no máximo 12 caracteres ")
 	private String senha;
 	
+	@Size(min=1,max=1000)
 	private String foto;
 	
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
