@@ -53,11 +53,6 @@ public class UsuarioController {
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
-	}
-	
-	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Usuario>> getByNome(@PathVariable String nome ){
-		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
-		}
+	}						
 	
 }
