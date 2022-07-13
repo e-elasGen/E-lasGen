@@ -18,6 +18,6 @@ Na tabela categoria do nosso e-commerce terá a descrição do produto de acordo
 Portanto, os atributos escolhidos para essa tabela foram:
 Id;
 Tipo; 
-Classe.
+Classe:
 
 
